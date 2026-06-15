@@ -30,7 +30,7 @@ function Use-MicrosoftPowerShellSecretStoreProvider {
     [CmdletBinding()]
     param()
 
-    # Install and import the SecretManagement stack via PowerShell.Common's
+    # Install and import the SecretManagement stack via Common.PowerShell's
     # Invoke-ModuleInstall, which centralises the install-if-absent pattern.
     # SecretManagement is installed first because SecretStore declares it as a
     # dependency; installing SecretStore before SecretManagement is available
