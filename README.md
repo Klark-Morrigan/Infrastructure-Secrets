@@ -214,9 +214,9 @@ Infrastructure-Secrets/
 |  `- Integration/      # Integration tests against a real SecretStore vault
 |- .github/
 |  `- workflows/                        # Consumer wrappers -> shared reusable workflows
-|     |- ci.yml                         #   -> Common-PowerShell ci-powershell (Pester unit)
-|     |- ci-docker-host.yml             #   -> Common-PowerShell docker-host integration
-|     |- ci-docker-target.yml           #   -> Common-PowerShell docker-target integration
+|     |- ci-powershell.yml              #   -> Common-PowerShell ci-powershell (Pester unit)
+|     |- ci-powershell-docker-host.yml  #   -> Common-PowerShell docker-host integration
+|     |- ci-powershell-docker-target.yml #  -> Common-PowerShell docker-target integration
 |     |- publish.yml                    #   -> Common-PowerShell publish (PSGallery)
 |     |- release.yml                    #   Version-gated release pipeline
 |     |- ci-bash.yml                    #   -> Common-Automation ci-bash (shellchecks scripts\ shims)

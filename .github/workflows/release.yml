@@ -35,17 +35,17 @@ jobs:
   test-unit:
     needs: check-version
     if: needs.check-version.outputs.version_is_new == 'true'
-    uses: ./.github/workflows/ci.yml
+    uses: ./.github/workflows/ci-powershell.yml
 
   test-integration-host:
     needs: check-version
     if: needs.check-version.outputs.version_is_new == 'true'
-    uses: ./.github/workflows/ci-docker-host.yml
+    uses: ./.github/workflows/ci-powershell-docker-host.yml
 
   test-integration-target:
     needs: check-version
     if: needs.check-version.outputs.version_is_new == 'true'
-    uses: ./.github/workflows/ci-docker-target.yml
+    uses: ./.github/workflows/ci-powershell-docker-target.yml
 
   # Tag, publish to PSGallery, and cut the GitHub Release in one shared
   # back-end workflow - see release-tail.yml in Common-PowerShell.
