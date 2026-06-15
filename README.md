@@ -212,8 +212,24 @@ Infrastructure-Secrets/
 |  |- Private/          # Unit tests for private functions
 |  |- Public/           # Unit tests for public functions
 |  `- Integration/      # Integration tests against a real SecretStore vault
-|- Install.ps1      # Installs from source for local development
-|- Publish.ps1      # Publishes to PSGallery (called by CI)
-|- Run-Tests.ps1    # Runs Pester tests (called by CI)
+|- .github/
+|  `- workflows/                        # Consumer wrappers -> shared reusable workflows
+|     |- ci.yml                         #   -> Common-PowerShell ci-powershell (Pester unit)
+|     |- ci-docker-host.yml             #   -> Common-PowerShell docker-host integration
+|     |- ci-docker-target.yml           #   -> Common-PowerShell docker-target integration
+|     |- publish.yml                    #   -> Common-PowerShell publish (PSGallery)
+|     |- release.yml                    #   Version-gated release pipeline
+|     |- ci-bash.yml                    #   -> Common-Automation ci-bash (shellchecks scripts\ shims)
+|     `- ci-yaml.yml                    #   -> Common-Automation ci-yaml (actionlint/yamllint/...)
+|- scripts/                             # User-facing entry-point scripts
+|  |- Install.ps1                       # Installs from source for local development
+|  |- Publish.ps1                       # Publishes to PSGallery (called by CI)
+|  |- Run-Tests.ps1                     # Runs Pester tests locally (called by CI)
+|  |- Run-IntegrationTests.ps1
+|  |- Run-IntegrationTests-AgainstDockerTarget.ps1
+|  |- Clear-AllSecrets.ps1              # Destructive SecretStore reset
+|  |- run-lint.sh / .bat                # Local lint suite -> Common-Automation (yamllint/actionlint/shellcheck)
+|  `- fix-permissions.sh / .bat         # Re-stages +x on tracked *.sh via the Common-Automation engine
+|- .gitattributes                       # Pins *.sh -> LF, *.bat -> CRLF (Linux runners reject CRLF shebangs)
 `- README.md
 ```
