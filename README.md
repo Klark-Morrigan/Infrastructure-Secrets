@@ -228,7 +228,9 @@ Infrastructure-Secrets/
 |  |- Run-IntegrationTests.ps1
 |  |- Run-IntegrationTests-AgainstDockerTarget.ps1
 |  |- Clear-AllSecrets.ps1              # Destructive SecretStore reset
-|  |- run-lint.sh / .bat                # Local lint suite -> Common-Automation (yamllint/actionlint/shellcheck)
+|  |- run-ci-yaml-and-bash.sh / .bat    # PRIMARY local entry: full lint suite + bats tests -> Common-Automation
+|  |- run-lint-yaml-and-bash.sh / .bat  # Lint half only (shellcheck/actionlint/action-validator/yamllint/ansible-lint)
+|  |- run-tests-bash.sh / .bat          # Bats test half only -> Common-Automation
 |  `- fix-permissions.sh / .bat         # Re-stages +x on tracked *.sh via the Common-Automation engine
 |- .gitattributes                       # Pins *.sh -> LF, *.bat -> CRLF (Linux runners reject CRLF shebangs)
 `- README.md
