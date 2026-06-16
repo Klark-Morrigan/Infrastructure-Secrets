@@ -31,4 +31,14 @@
             GUID          = 'b7d3f2a1-4c9e-4f8d-a2b5-3e6d7f8a9b0c'
         }
     )
+    # PSData surfaces the project/license links and release notes on the
+    # PowerShell Gallery package page, giving the listing a link back to
+    # the source repository.
+    PrivateData = @{
+        PSData = @{
+            ProjectUri   = 'https://github.com/VitaliiAndreev/Infrastructure-Secrets'
+            LicenseUri   = 'https://github.com/VitaliiAndreev/Infrastructure-Secrets/blob/master/LICENSE'
+            ReleaseNotes = 'https://github.com/VitaliiAndreev/Infrastructure-Secrets/releases'
+        }
+    }
 }
