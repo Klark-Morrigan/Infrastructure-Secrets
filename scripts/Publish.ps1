@@ -4,7 +4,7 @@
 
 .DESCRIPTION
     Local-only entry point for publishing. CI uses the reusable action in
-    VitaliiAndreev/Common-PowerShell/.github/actions/publish directly -
+    Klark-Morrigan/Common-PowerShell/.github/actions/publish directly -
     do not call this from workflows.
 
     Run from the Infrastructure-Secrets repo root after bumping

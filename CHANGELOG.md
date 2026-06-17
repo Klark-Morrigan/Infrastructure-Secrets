@@ -12,6 +12,11 @@ history and the tag list.
 
 ## [Unreleased]
 
+## [4.0.0] - 2026-06-17
+
+### Changed
+- Major version bump; no functional changes (version realignment).
+
 ## [3.0.1] - 2026-06-15
 
 ### Added
@@ -25,5 +30,6 @@ history and the tag list.
   `Use-MicrosoftPowerShellSecretStoreProvider` - vault setup plus
   provider-based runtime secret read/write for infrastructure repos.
 
-[Unreleased]: https://github.com/VitaliiAndreev/Infrastructure-Secrets/compare/3.0.1...HEAD
-[3.0.1]: https://github.com/VitaliiAndreev/Infrastructure-Secrets/compare/3.0.0...3.0.1
+[Unreleased]: https://github.com/Klark-Morrigan/Infrastructure-Secrets/compare/4.0.0...HEAD
+[4.0.0]: https://github.com/Klark-Morrigan/Infrastructure-Secrets/compare/3.0.1...4.0.0
+[3.0.1]: https://github.com/Klark-Morrigan/Infrastructure-Secrets/compare/3.0.0...3.0.1
