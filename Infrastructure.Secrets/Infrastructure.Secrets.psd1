@@ -1,7 +1,7 @@
 @{
-    ModuleVersion        = '3.0.1'
+    ModuleVersion        = '4.0.0'
     GUID                 = 'a3f2e1d4-7b8c-4e5f-9a0b-1c2d3e4f5a6b'
-    Author               = 'Vitaly Andrev'
+    Author               = 'Klark Morrigan'
     Description          = 'Shared secret management for infrastructure repos: vault setup and provider-based runtime read/write.'
     PowerShellVersion    = '7.0'
     CompatiblePSEditions = @('Core')
@@ -27,7 +27,7 @@
     RequiredModules   = @(
         @{
             ModuleName    = 'Common.PowerShell'
-            ModuleVersion = '6.0.0'
+            ModuleVersion = '9.0.0'
             GUID          = 'b7d3f2a1-4c9e-4f8d-a2b5-3e6d7f8a9b0c'
         }
     )
@@ -36,9 +36,9 @@
     # the source repository.
     PrivateData = @{
         PSData = @{
-            ProjectUri   = 'https://github.com/VitaliiAndreev/Infrastructure-Secrets'
-            LicenseUri   = 'https://github.com/VitaliiAndreev/Infrastructure-Secrets/blob/master/LICENSE'
-            ReleaseNotes = 'https://github.com/VitaliiAndreev/Infrastructure-Secrets/releases'
+            ProjectUri   = 'https://github.com/Klark-Morrigan/Infrastructure-Secrets'
+            LicenseUri   = 'https://github.com/Klark-Morrigan/Infrastructure-Secrets/blob/master/LICENSE'
+            ReleaseNotes = 'https://github.com/Klark-Morrigan/Infrastructure-Secrets/releases'
         }
     }
 }
