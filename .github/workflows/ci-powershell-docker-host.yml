@@ -5,7 +5,6 @@ name: CI (Docker host)
 # mirroring the pattern used by ci.yml for unit tests.
 on:
   pull_request:
-    branches: [ main, master ]
   workflow_call:
   workflow_dispatch:
 
