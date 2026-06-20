@@ -47,6 +47,14 @@ function Initialize-MicrosoftPowerShellSecretStoreVault {
                 if ($defs.Count -eq 0) { throw 'No entries found.' }
             }
     #>
+    # SecretStore's Reset-SecretStore requires a SecureString password to
+    # initialise the store even when the target auth mode is None. The temp
+    # password is a fixed bootstrap value, used only to pass that gate and
+    # discarded once the auth mode is set - it guards nothing persistent, so
+    # the plaintext-secure-string rule does not apply here.
+    [Diagnostics.CodeAnalysis.SuppressMessageAttribute(
+        'PSAvoidUsingConvertToSecureStringWithPlainText', '',
+        Justification = 'Bootstrap password to satisfy Reset-SecretStore; not a stored secret.')]
     [CmdletBinding(DefaultParameterSetName = 'File')]
     param(
         [Parameter(Mandatory)]
@@ -136,6 +144,8 @@ function Initialize-MicrosoftPowerShellSecretStoreVault {
     catch {
         # Store not initialised, or Password-auth store on an older module
         # version where the cmdlet throws - fall through to file fallback.
+        # The throw is expected and non-fatal; record it for -Verbose runs.
+        Write-Verbose "Get-SecretStoreConfiguration failed ($($_.Exception.Message)); using file fallback."
     }
 
     if ($null -eq $currentAuth) {
@@ -154,7 +164,11 @@ function Initialize-MicrosoftPowerShellSecretStoreVault {
                     'Password'
                 }
             }
-            catch { }
+            catch {
+                # Unreadable/corrupt storeconfig - leave $currentAuth null so
+                # the store is treated as uninitialised. Non-fatal by design.
+                Write-Verbose "storeconfig unreadable ($($_.Exception.Message)); treating store as uninitialised."
+            }
         }
     }
 
