@@ -4,9 +4,9 @@
 
 .DESCRIPTION
     For development and testing of the module itself only.
-    Consuming repos install from PSGallery — they do not call this script.
+    Consuming repos install from PSGallery - they do not call this script.
 
-    Idempotent — skips installation if the module is already up to date.
+    Idempotent - skips installation if the module is already up to date.
 
 .EXAMPLE
     .\Install.ps1
@@ -29,7 +29,7 @@ $dstVersion  = if (Test-Path $dstManifest) {
                } else { $null }
 
 if ($srcVersion -eq $dstVersion) {
-    Write-Host "✓ Infrastructure.Secrets v$srcVersion already installed - skipping." `
+    Write-Host "OK - Infrastructure.Secrets v$srcVersion already installed - skipping." `
         -ForegroundColor Green
     return
 }
@@ -37,4 +37,4 @@ if ($srcVersion -eq $dstVersion) {
 Write-Host "Installing Infrastructure.Secrets v$srcVersion from source ..."
 if (Test-Path $moduleDst) { Remove-Item $moduleDst -Recurse -Force }
 Copy-Item -Path $moduleSrc -Destination $moduleDst -Recurse
-Write-Host "✓ Infrastructure.Secrets v$srcVersion installed." -ForegroundColor Green
+Write-Host "OK - Infrastructure.Secrets v$srcVersion installed." -ForegroundColor Green
