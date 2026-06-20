@@ -18,6 +18,16 @@
 #   skipped rather than resetting the store and destroying existing secrets.
 # ---------------------------------------------------------------------------
 
+# File-scoped suppression: this suite bootstraps a throwaway SecretStore with
+# a fixed password solely to run non-interactively in CI. SecretStore requires
+# a SecureString to initialise; the value guards nothing persistent and is
+# discarded after the auth mode is set, so the plaintext-secure-string rule
+# does not apply to this file.
+[Diagnostics.CodeAnalysis.SuppressMessageAttribute(
+    'PSAvoidUsingConvertToSecureStringWithPlainText', '',
+    Justification = 'Throwaway bootstrap password for non-interactive SecretStore init in CI.')]
+param()
+
 BeforeAll {
     $Script:SecretProvider = $null
     $Script:VaultName      = 'InfrastructureSecretsIntegrationTest'
