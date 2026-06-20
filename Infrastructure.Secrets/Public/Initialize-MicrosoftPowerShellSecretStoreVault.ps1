@@ -144,6 +144,8 @@ function Initialize-MicrosoftPowerShellSecretStoreVault {
     catch {
         # Store not initialised, or Password-auth store on an older module
         # version where the cmdlet throws - fall through to file fallback.
+        # The throw is expected and non-fatal; record it for -Verbose runs.
+        Write-Verbose "Get-SecretStoreConfiguration failed ($($_.Exception.Message)); using file fallback."
     }
 
     if ($null -eq $currentAuth) {
@@ -162,7 +164,11 @@ function Initialize-MicrosoftPowerShellSecretStoreVault {
                     'Password'
                 }
             }
-            catch { }
+            catch {
+                # Unreadable/corrupt storeconfig - leave $currentAuth null so
+                # the store is treated as uninitialised. Non-fatal by design.
+                Write-Verbose "storeconfig unreadable ($($_.Exception.Message)); treating store as uninitialised."
+            }
         }
     }
 

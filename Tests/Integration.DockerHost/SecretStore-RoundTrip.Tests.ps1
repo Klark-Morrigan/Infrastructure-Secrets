@@ -95,7 +95,14 @@ BeforeAll {
     else {
         # Store exists - safe to read its configuration now.
         $storeCfg = $null
-        try { $storeCfg = Get-SecretStoreConfiguration -ErrorAction Stop } catch { }
+        try {
+            $storeCfg = Get-SecretStoreConfiguration -ErrorAction Stop
+        }
+        catch {
+            # Unreadable config - leave $storeCfg null so the auth check below
+            # treats the mode as unknown (non-Password) and proceeds. Non-fatal.
+            Write-Verbose "Get-SecretStoreConfiguration failed ($($_.Exception.Message)); auth mode unknown."
+        }
 
         $authValue       = if ($null -ne $storeCfg) { $storeCfg.Authentication } else { $null }
         $storeIsPassword = ($null -ne $authValue) -and
